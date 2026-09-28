@@ -5,3 +5,7 @@ This project is a series of Machine Learning models trained on real open-source 
 Setup: Download the dataset from Kaggle - https://www.kaggle.com/datasets/gzdekzlkaya/credit-card-fraud-detection-dataset
 
 Install required libraries run: pip install -r requirements.txt
+
+Current agenda:
+- Check predict_proba to change the cut-off of the model for determining classes
+- Create a new model using gradience
