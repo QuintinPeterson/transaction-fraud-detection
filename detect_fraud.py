@@ -73,3 +73,12 @@ plt.title("Confusion Matrix AFTER SMOTE")
 plt.xlabel("Predicted")
 plt.ylabel("Actual")
 plt.show()
+
+# check probabilities for each class on each transaction
+
+probabilities = model.predict_proba(feature_test)
+predictions = model.predict(feature_test)
+
+for i, (pred, prob) in enumerate(zip(predictions, probabilities)):
+    print(f"Sample {i+1}: Predicted Class = {pred}, Class 0 Probability = {prob[0]:.4f}, Class 1 Probability = {prob[1]:.4f}")
+
