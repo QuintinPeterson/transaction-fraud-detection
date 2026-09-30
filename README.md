@@ -8,5 +8,5 @@ Install required libraries run: pip install -r requirements.txt
 
 Current agenda:
 - Check predict_proba to change the cut-off of the model for determining classes
-- Create a new model using gradience
+- Create a new model using gradient descent
 - Put dataset into an SQL database
