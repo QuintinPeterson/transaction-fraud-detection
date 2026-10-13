@@ -2,3 +2,4 @@ creditcard_fraud_detection.csv
 .venv/
 detect_fraud.py
 data.ipynb
+scaler.joblib
