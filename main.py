@@ -14,4 +14,6 @@ X_train_scaled, X_test_scaled, scaler = scale_data(X_train, X_test)
 
 joblib.dump(scaler, 'scaler.joblib')
 
-print(X_train_scaled.shape)
+#print(X_train_scaled.shape)
+#print(X_train_scaled.describe())
+print(X_test_scaled.describe())
