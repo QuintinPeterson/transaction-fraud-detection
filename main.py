@@ -12,6 +12,7 @@ X_train, X_test, y_train, y_test = split_data(data)
 # scale feature training data
 X_train_scaled, X_test_scaled, scaler = scale_data(X_train, X_test)
 
+# save scaler for scaling future real-time data
 joblib.dump(scaler, 'scaler.joblib')
 
 #print(X_train_scaled.shape)
