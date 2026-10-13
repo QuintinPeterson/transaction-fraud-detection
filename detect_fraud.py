@@ -63,7 +63,9 @@ plt.show()
 # train logistic regression
 model.fit(feature_train, target_train)
 
+# model's predictions on what class an input belongs to
 target_pred = model.predict(feature_test)
+
 
 print("Accuracy AFTER SMOTE:", round(accuracy_score(target_test, target_pred)*100, 2), "%\n")
 print("Classification AFTER SMOTE:\n", classification_report(target_test, target_pred))
