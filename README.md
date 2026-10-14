@@ -1,6 +1,6 @@
 TRANSACTION FRAUD DETECTION SYSTEM
 
-This project is a series of Machine Learning models trained on real open-source credit card data to spot and flag unseen fradulant purchases. It uses an array of different models and techniques to tune and check efficiency.
+This project is a series of Machine Learning models trained on real open-source credit card data to spot and flag unseen fraudulent purchases. It uses an array of different models and techniques to tune and check efficiency.
 
 Machine Learning pipeline: Load Data -> Split data -> Scale Data -> Resample Data -> Train Model -> Predict Model -> Evaluate Model
 
@@ -8,7 +8,3 @@ Setup: Download the dataset from Kaggle - https://www.kaggle.com/datasets/gzdekz
 
 Install required libraries run: pip install -r requirements.txt
 
-Current agenda:
-- Check predict_proba to change the cut-off of the model for determining classes
-- Create a new model using gradient descent
-- Put dataset into an SQL database
