@@ -21,4 +21,6 @@ X_train_resampled, y_train_resampled = resample_data(X_train_scaled, y_train)
 
 #print(X_train_scaled.shape)
 #print(X_train_scaled.describe())
-print(X_test_scaled.describe())
+#print(X_test_scaled.describe())
+print(y_train.value_counts())
+print(y_train_resampled.value_counts())
