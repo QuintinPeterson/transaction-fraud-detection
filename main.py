@@ -3,6 +3,7 @@ import joblib
 from src.preprocessing.split import split_data
 from src.preprocessing.scale import scale_data
 from src.preprocessing.resample import resample_data
+from src.models.train_model_control import train_mode_control
 
 # load dataset into a pandas Datafram named 'data'
 data = pd.read_csv("data/creditcard_fraud_detection.csv")
@@ -18,6 +19,17 @@ joblib.dump(scaler, 'scaler.joblib')
 
 # resample all training data
 X_train_resampled, y_train_resampled = resample_data(X_train_scaled, y_train)
+
+# train control model for comparison
+model_control = train_mode_control(X_train, y_train)
+
+# predict control model
+# accuracy of model on the testing set
+print("Accuracy BEFORE SMOTE:" "%\n")
+
+# classification report to measure how well the model is performing
+print("Classification Report BEFORE SMOTE:\n", )
+
 
 #print(X_train_scaled.shape)
 #print(X_train_scaled.describe())
