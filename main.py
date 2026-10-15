@@ -4,6 +4,8 @@ from src.preprocessing.split import split_data
 from src.preprocessing.scale import scale_data
 from src.preprocessing.resample import resample_data
 from src.models.train_model_control import train_mode_control
+from src.models.predict_model import predict_model
+from src.models.evaluate_model import evaluate_model
 
 # load dataset into a pandas Datafram named 'data'
 data = pd.read_csv("data/creditcard_fraud_detection.csv")
@@ -24,15 +26,11 @@ X_train_resampled, y_train_resampled = resample_data(X_train_scaled, y_train)
 model_control = train_mode_control(X_train, y_train)
 
 # predict control model
+target_control_pred = predict_model(model_control, X_test)
 # accuracy of model on the testing set
-print("Accuracy BEFORE SMOTE:" "%\n")
+accuracy_control, class_report_control =  evaluate_model(y_test, target_control_pred)
+print(f"Accuracy BEFORE SMOTE: {accuracy_control}" "%\n")
 
 # classification report to measure how well the model is performing
-print("Classification Report BEFORE SMOTE:\n", )
+print("Classification Report BEFORE SMOTE:\n", class_report_control)
 
-
-#print(X_train_scaled.shape)
-#print(X_train_scaled.describe())
-#print(X_test_scaled.describe())
-print(y_train.value_counts())
-print(y_train_resampled.value_counts())

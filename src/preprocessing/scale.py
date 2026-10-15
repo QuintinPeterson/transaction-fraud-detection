@@ -13,7 +13,7 @@ def scale_data(X_train, X_test):
 
 
     # Transform the feature test data to the standard range
-    X_test_scaled = scaler.transform(X_test) 
+    X_test_scaled = scaler.transform(X_test)
 
     # same as X_trained_scaled, turn it back into a df from an array
     X_test_scaled = pd.DataFrame(X_test_scaled, columns=X_test.columns, index=X_test.index)
