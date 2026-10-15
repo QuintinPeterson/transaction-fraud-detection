@@ -7,6 +7,9 @@ from src.models.train_model_control import train_model_control
 from src.models.train_model import train_model
 from src.models.predict_model import predict_model
 from src.models.evaluate_model import evaluate_model
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics import confusion_matrix
 
 # load dataset into a pandas Datafram named 'data'
 data = pd.read_csv("data/creditcard_fraud_detection.csv")
@@ -39,7 +42,7 @@ accuracy_control, class_report_control =  evaluate_model(y_test, target_control_
 model = train_model(X_train_resampled, y_train_resampled)
 
 # predict model
-target_pred = predict_model(model, X_test)
+target_pred = predict_model(model, X_test_scaled)
 
 # accuracy of model on the testing set
 accuracy, class_report =  evaluate_model(y_test, target_pred)
@@ -49,4 +52,8 @@ print(f"Accuracy AFTER SMOTE: {accuracy}" "%\n")
 # classification report to measure how well the model is performing
 print("Classification Report AFTER SMOTE:\n", class_report)
 
-# TODO: CHECK WHY REPORT NUMBERS ARE BUGGED
+sns.heatmap(confusion_matrix(y_test, target_pred), annot=True, fmt='d', cmap='Blues')
+plt.title("Confusion Matrix AFTER SMOTE")
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+plt.show()
