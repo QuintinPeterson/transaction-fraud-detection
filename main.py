@@ -3,7 +3,8 @@ import joblib
 from src.preprocessing.split import split_data
 from src.preprocessing.scale import scale_data
 from src.preprocessing.resample import resample_data
-from src.models.train_model_control import train_mode_control
+from src.models.train_model_control import train_model_control
+from src.models.train_model import train_model
 from src.models.predict_model import predict_model
 from src.models.evaluate_model import evaluate_model
 
@@ -23,14 +24,29 @@ joblib.dump(scaler, 'scaler.joblib')
 X_train_resampled, y_train_resampled = resample_data(X_train_scaled, y_train)
 
 # train control model for comparison
-model_control = train_mode_control(X_train, y_train)
+model_control = train_model_control(X_train, y_train)
 
 # predict control model
 target_control_pred = predict_model(model_control, X_test)
 # accuracy of model on the testing set
 accuracy_control, class_report_control =  evaluate_model(y_test, target_control_pred)
-print(f"Accuracy BEFORE SMOTE: {accuracy_control}" "%\n")
+#print(f"Accuracy BEFORE SMOTE: {accuracy_control}" "%\n")
 
 # classification report to measure how well the model is performing
-print("Classification Report BEFORE SMOTE:\n", class_report_control)
+#print("Classification Report BEFORE SMOTE:\n", class_report_control)
 
+# train model with SMOTE
+model = train_model(X_train_resampled, y_train_resampled)
+
+# predict model
+target_pred = predict_model(model, X_test)
+
+# accuracy of model on the testing set
+accuracy, class_report =  evaluate_model(y_test, target_pred)
+
+print(f"Accuracy AFTER SMOTE: {accuracy}" "%\n")
+
+# classification report to measure how well the model is performing
+print("Classification Report AFTER SMOTE:\n", class_report)
+
+# TODO: CHECK WHY REPORT NUMBERS ARE BUGGED
