@@ -60,5 +60,7 @@ plt.ylabel("Actual")
 plt.show()
 '''
 prob = predict_proba(model, X_test_scaled)
-print(prob[:5])      # first 5 rows: you should see decimals in two columns
+print(prob[:5])      
 print(prob.shape)
+fraud_probs = prob[:, 1]
+print(fraud_probs.sum())
