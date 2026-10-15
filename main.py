@@ -5,7 +5,7 @@ from src.preprocessing.scale import scale_data
 from src.preprocessing.resample import resample_data
 from src.models.train_model_control import train_model_control
 from src.models.train_model import train_model
-from src.models.predict_model import predict_model
+from src.models.predict_model import predict_model, predict_proba
 from src.models.evaluate_model import evaluate_model
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -27,12 +27,12 @@ joblib.dump(scaler, 'scaler.joblib')
 X_train_resampled, y_train_resampled = resample_data(X_train_scaled, y_train)
 
 # train control model for comparison
-model_control = train_model_control(X_train, y_train)
+#model_control = train_model_control(X_train, y_train)
 
 # predict control model
-target_control_pred = predict_model(model_control, X_test)
+#target_control_pred = predict_model(model_control, X_test)
 # accuracy of model on the testing set
-accuracy_control, class_report_control =  evaluate_model(y_test, target_control_pred)
+#accuracy_control, class_report_control =  evaluate_model(y_test, target_control_pred)
 #print(f"Accuracy BEFORE SMOTE: {accuracy_control}" "%\n")
 
 # classification report to measure how well the model is performing
@@ -47,6 +47,7 @@ target_pred = predict_model(model, X_test_scaled)
 # accuracy of model on the testing set
 accuracy, class_report =  evaluate_model(y_test, target_pred)
 
+'''
 print(f"Accuracy AFTER SMOTE: {accuracy}" "%\n")
 
 # classification report to measure how well the model is performing
@@ -57,3 +58,7 @@ plt.title("Confusion Matrix AFTER SMOTE")
 plt.xlabel("Predicted")
 plt.ylabel("Actual")
 plt.show()
+'''
+prob = predict_proba(model, X_test_scaled)
+print(prob[:5])      # first 5 rows: you should see decimals in two columns
+print(prob.shape)

@@ -5,3 +5,8 @@ def predict_model(model, X_test):
     target_pred = model.predict(X_test)
 
     return target_pred
+
+def predict_proba(model, X_test):
+    prob = model.predict_proba(X_test)
+
+    return prob
