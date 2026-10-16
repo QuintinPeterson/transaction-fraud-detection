@@ -10,6 +10,7 @@ from src.models.evaluate_model import evaluate_model
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import confusion_matrix
+from sklearn.model_selection import TunedThresholdClassifierCV
 
 # load dataset into a pandas Datafram named 'data'
 data = pd.read_csv("data/creditcard_fraud_detection.csv")
