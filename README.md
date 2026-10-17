@@ -23,3 +23,7 @@ Classification Report AFTER SMOTE:
 
            0       1.00      0.97      0.99     56864
            1       0.06      0.92      0.11        98 
+
+To start tuning this improved model we can test the cutoff of 0.7. In this case we see a loss of $137,800 in total, meaning the cutoff of 0.7 saves $15,550 compared to the cutoff of 0.5.
+
+TODO: Test cutoffs from 0.50 to 0.99 by increments of 0.05
