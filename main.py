@@ -61,8 +61,14 @@ plt.ylabel("Actual")
 plt.show()
 '''
 prob = predict_proba(model, X_test_scaled)
-print(prob[:5])      
-print(prob.shape)
+#print(prob[:5])      
+#print(prob.shape)
 fraud_probs = prob[:, 1]
 y_pred_70 = (fraud_probs > 0.7).astype(int)
 print(y_pred_70.sum())
+
+sns.heatmap(confusion_matrix(y_test, y_pred_70), annot=True, fmt='d', cmap='Blues')
+plt.title("Confusion Matrix cutoff 0.7")
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+plt.show()
